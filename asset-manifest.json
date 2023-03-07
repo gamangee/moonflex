@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/moonflix/static/js/main.91a7f86c.js",
+    "main.js": "/moonflix/static/js/main.fab8d5df.js",
     "index.html": "/moonflix/index.html",
-    "main.91a7f86c.js.map": "/moonflix/static/js/main.91a7f86c.js.map"
+    "main.fab8d5df.js.map": "/moonflix/static/js/main.fab8d5df.js.map"
   },
   "entrypoints": [
-    "static/js/main.91a7f86c.js"
+    "static/js/main.fab8d5df.js"
   ]
 }
