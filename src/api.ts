@@ -98,6 +98,43 @@ interface ISearchResults {
   vote_count: number;
 }
 
+interface ISearchItem {
+  backdrop_path: string;
+  name?: string;
+  title?: string;
+  id: number;
+  media_type: string;
+}
+
+export interface ISearchList {
+  results: ISearchItem[];
+}
+
+export interface ISearch {
+  adult: boolean;
+  backdrop_path: string;
+  id: number;
+  title: string;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  poster_path: string;
+  media_type: string;
+  genre_ids: number[];
+  popularity: number;
+  release_date: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface IGetSearch {
+  page: number;
+  results: ISearch[];
+  total_pages: number;
+  total_results: number;
+}
+
 export function getSearch(keyword: string) {
   return fetch(
     `${BASE_PATH}/search/multi?api_key=${API_KEY}&query=${keyword}`
@@ -107,3 +144,27 @@ export function getSearch(keyword: string) {
 // export function getSearch(keyword: string) {
 //   return fetch(`/data/multi_search.json`).then((response) => response.json());
 // }
+
+interface IGenre {
+  id: number;
+  name: string;
+}
+
+export interface IGetDetail {
+  title?: string;
+  name?: string;
+  id: string;
+  overview: string;
+  backdrop_path: string;
+  genres: IGenre[];
+  poster_path: string;
+  release_date: string;
+  vote_average: number;
+  first_air_date: string;
+}
+
+export function getDetailData(id: string, requestType: string) {
+  return fetch(
+    `${BASE_PATH}/${requestType}/${id}?api_key=${API_KEY}&language=ko-KR`
+  ).then((response) => response.json());
+}
