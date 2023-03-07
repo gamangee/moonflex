@@ -7,12 +7,10 @@ import { makeImagePath } from '../utils';
 
 interface ISearch {
   dataId?: number;
-  listType: string;
-  menuName?: string;
   requestUrl: string;
 }
 
-export default function SearchModal({ dataId, listType, requestUrl }: ISearch) {
+export default function SearchModal({ dataId, requestUrl }: ISearch) {
   const navigate = useNavigate();
 
   const { data } = useQuery<IGetDetail>(['search', dataId], () =>
@@ -24,18 +22,25 @@ export default function SearchModal({ dataId, listType, requestUrl }: ISearch) {
   };
 
   return (
-    <AnimatePresence>
+    <>
       <Overlay onClick={onOverlayClicked} />
-      <Container layoutId={dataId + listType}>
-        <Cover>
-          <Img
-            src={
-              data?.backdrop_path === null
-                ? 'data/no_img.png'
-                : makeImagePath(data?.backdrop_path || '')
-            }
+      <Container layoutId={dataId + ''}>
+        {data?.backdrop_path === null ? (
+          <Cover
+            style={{
+              backgroundImage: "url('data/no_img.png')",
+              backgroundPosition: 'center center',
+            }}
           />
-        </Cover>
+        ) : (
+          <Cover>
+            <Img
+              src={
+                data?.backdrop_path && makeImagePath(data?.backdrop_path || '')
+              }
+            />
+          </Cover>
+        )}
         <Contents>
           <Title>{data?.title || data?.name}</Title>
           <Info>
@@ -45,7 +50,7 @@ export default function SearchModal({ dataId, listType, requestUrl }: ISearch) {
           <Overview>{data?.overview}</Overview>
         </Contents>
       </Container>
-    </AnimatePresence>
+    </>
   );
 }
 
@@ -74,6 +79,8 @@ const Container = styled(motion.div)`
 const Cover = styled(motion.div)`
   position: relative;
   width: 100%;
+  min-height: 400px;
+  overflow: hidden;
 `;
 
 const Img = styled.img`

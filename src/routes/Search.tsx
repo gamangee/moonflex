@@ -49,15 +49,7 @@ export default function Search() {
           </Box>
         ))}
       </Boxs>
-      <AnimatePresence>
-        {id && type && (
-          <SearchSlider
-            dataId={+id}
-            listType={'searchItem'}
-            requestUrl={type}
-          />
-        )}
-      </AnimatePresence>
+      {id && type && <SearchSlider dataId={+id} requestUrl={type} />}
     </Wrapper>
   );
 }
