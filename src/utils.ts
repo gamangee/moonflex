@@ -15,8 +15,3 @@ export enum TypesTvShows {
   'popular' = 'popular',
   'top_rated' = 'top_rated',
 }
-
-export enum Types {
-  'movie' = 'movie',
-  'tv' = 'tv',
-}

@@ -1,13 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  getSearch,
-  IGetSearch,
-  IGetSearchResult,
-  ISearch,
-  ISearchList,
-} from '../api';
+import { getSearch, IGetSearch } from '../api';
 import styled from 'styled-components';
 import { makeImagePath } from '../utils';
 import { AnimatePresence, motion } from 'framer-motion';
